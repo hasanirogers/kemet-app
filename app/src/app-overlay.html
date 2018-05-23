@@ -1,0 +1,40 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="app-styles.html">
+
+<dom-module id="app-overlay">
+  <template>
+    <custom-style>
+      <style is="custom-style" include="app-styles"></style>
+    </custom-style> 
+    <style>
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100vh;
+            background: rgba(32,32,32, 0.75);
+            animation: fadein 600ms ease-in;
+        }
+
+        @keyframes fadein {
+          0% {
+            opacity: 0;
+          }
+          100% {
+            opacity: 1;
+          }
+        }
+    </style>
+    <div id="overlay"></div>
+  </template>
+
+  <script>
+    class AppOverlay extends Polymer.Element {
+      static get is() { return 'app-overlay'; }
+    }
+
+    window.customElements.define(AppOverlay.is, AppOverlay);
+  </script>
+</dom-module>

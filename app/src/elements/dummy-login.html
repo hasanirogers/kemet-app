@@ -1,0 +1,41 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../app-styles.html">
+<link rel="import" href="../app-icons.html">
+
+
+<dom-module id="dummy-login">
+  <template>
+    <style>
+        :host {
+            display: block;
+            padding: 1rem;
+            border: 1px solid #ddd;
+        }
+
+        paper-button {
+            margin-top: 1rem;
+        }
+    </style>
+    <paper-input label="Find Your Dream Planet"></paper-input>
+    <paper-input label="Number of Moons"></paper-input>
+    <paper-button raised>Search Now</paper-button>
+  </template>
+
+  <script>
+    class DummyLogin extends Polymer.Element {
+      static get is() { return 'dummy-login'; }
+
+      static get properties() {
+          return {
+              label: {
+                  type: String
+              }
+          }
+      }
+    }
+
+    window.customElements.define(DummyLogin.is, DummyLogin);
+  </script>
+</dom-module>

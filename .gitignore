@@ -1,0 +1,5 @@
+build/
+node_modules/
+app/bower_components
+public/components
+.env

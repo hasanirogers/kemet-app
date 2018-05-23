@@ -1,0 +1,443 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/syntax-highlight/syntax-highlight.html">
+
+<link rel="import" href="elements/kemet-styles/kemet-styles-layout.html">
+<link rel="import" href="app-styles.html">
+<link rel="import" href="app-icons.html">
+
+
+<dom-module id="view-home">
+  <template>
+     <custom-style>
+      <style is="custom-style" include="kemet-styles-layout"></style>
+    </custom-style>
+    <custom-style>
+      <style is="custom-style" include="app-styles"></style>
+    </custom-style> 
+    <style>
+      .templates [layout] > * {
+        text-align: center;
+      }
+
+      .templates figure {
+        margin-bottom: 0rem;
+      }
+
+      .card {
+        margin-bottom: 2rem;
+      }
+
+      @media screen and (min-width: 1280px) {
+        :host {
+          margin: auto;
+          max-width: 1280px;
+        }
+      }
+    </style>
+
+    <section id="getting-started" class="card core">
+      <h2>Getting Started</h2>
+      <p>Kemet is unique in that it you use it by using special attributes and not just class names. We believe this makes things way more intuitive to read and easier to manage. With kemet you specifiy the kind of layout you want with the <code>layout</code> attribute and the sizing at breakpoints with the <code>breakpoint</code> attribute. You can also use special attributes like <code>gutters</code> to add gutters to your layout. You can mix and match these attribute unless specified otherwise. For example, you can use <code>order</code> on a flexlist, flexrow, or flexgrid.</p>
+      <p>All of Kemet's breakpoints are mobile first with the exception of the visibility classes.</p>
+
+      <h3><syntax-highlight theme="rainbow">layout="flexrow"</syntax-highlight></h3>
+      <p>Flexrow allows you to layout items in row (or a flexbox line). Add as many items to the row as you like and sizing is largely automated.</p>
+      <figure>
+        <figcaption>
+          <p>This is most basic usage of flexrow. Every direct descendent of flexrow will equally distribute space.</p>
+        </figcaption>
+        <div layout="flexrow">
+            <div><span class="box">Item 1</span></div>
+            <div><span class="box">Item 2</span></div>
+            <div><span class="box">Item 3</span></div>
+            <div><span class="box">Item 4</span></div>
+        </div>
+        <syntax-highlight theme="rainbow"><div layout="flexrow">
+    <div><span class="box">Item 1</span></div>
+    <div><span class="box">Item 2</span></div>
+    <div><span class="box">Item 3</span></div>
+    <div><span class="box">Item 4</span></div>
+</div></syntax-highlight>     
+      </figure>
+      <figure>
+        <figcaption>
+          <p>Add <code>autostack</code> to flexrow to force the items to stack to a mobile layout at the <code>$stackpoint</code> variable. Add <code>gutters</code> to flexrow to put gutter spacing between items.</p>
+        </figcaption>
+        <div layout="flexrow" autostack gutters>
+            <div><span class="box">Item 1</span></div>
+            <div><span class="box">Item 2</span></div>
+            <div><span class="box">Item 3</span></div>
+            <div><span class="box">Item 4</span></div>
+        </div>
+        <syntax-highlight theme="rainbow"><div layout="flexrow" autostack gutters>
+    <div><span class="box">Item 1</span></div>
+    <div><span class="box">Item 2</span></div>
+    <div><span class="box">Item 3</span></div>
+    <div><span class="box">Item 4</span></div>
+</div></syntax-highlight>
+      </figure>
+      <figure>
+        <figcaption>
+          <p>You can add <code>plus-n</code> or <code>minus-n</code> to gutters where <em>n</em> is a configured multiple of default spacing. Use this to control the amount of spacing for the gutters.</p>
+        </figcaption>
+          <div layout="flexrow" gutters="plus-6">
+              <div breakpoint="medium-33"><span class="box">Item 1</span></div>
+              <div><span class="box">Item 2</span></div>
+              <div><span class="box">Item 3</span></div>
+              <div><span class="box">Item 4</span></div>
+          </div>
+          <syntax-highlight theme="rainbow"><div layout="flexrow" gutters="plus-6">
+    <div breakpoint="medium-33"><span class="box">Item 1</span></div>
+    <div><span class="box">Item 2</span></div>
+    <div><span class="box">Item 3</span></div>
+    <div><span class="box">Item 4</span></div>
+</div></syntax-highlight>
+      </figure>
+      <figure>
+        <figcaption>
+          <p>You can control the size items at each breakpoint with <code>breakpoint</code>. The syntax is <em>breakpoint-size</em>. <code>-content</code> means fit item's content. All other sizes are numerical multiples of 5 (5-100) and also <code>-33</code> and <code>-66</code>. You only need to add breakpoints to items that you want to size. Items without breakpoints will equally distribute.</p>
+        </figcaption>
+        <div layout="flexrow" flex-items gutters="minus-1" >
+            <div breakpoint="tiny-content">
+              <span class="box">
+                <iron-icon icon="icons:polymer"></iron-icon>
+              </span>
+            </div>
+            <div><span class="box">Item 2</span></div>
+            <div><span class="box">Item 3</span></div>
+            <div breakpoint="tiny-50"><span class="box">Item 4</span></div>
+        </div>
+        <syntax-highlight theme="rainbow"><div layout="flexrow" flex-items gutters="minus-1" >
+    <div breakpoint="tiny-content">
+      <span class="box">
+        <iron-icon icon="icons:polymer"></iron-icon>
+      </span>
+    </div>
+    <div><span class="box">Item 2</span></div>
+    <div><span class="box">Item 3</span></div>
+    <div breakpoint="tiny-50"><span class="box">Item 4</span></div>
+</div></syntax-highlight>
+      </figure>
+      <figure>
+        <figcaption>
+          <p>You can align all items by using <code>align</code> on your container or a specific item by using <code>align</code> on your item. Values are <code>top</code>, <code>middle</code>, <code>bottom</code>, <code>stretch</code>.</p>
+        </figcaption>
+        <div layout="flexrow" gutters="plus-1" align="middle" style="height: 64px;">
+            <div align="bottom">
+              <span class="box">Item 1</span>
+            </div>
+            <div><span class="box">Item 2</span></div>
+            <div align="top">
+              <span class="box">Item 3</span>
+            </div>
+            <div><span class="box">Item 4</span></div>
+            <div align="bottom">
+              <span class="box">Item 5</span>
+            </div>
+        </div>
+        <syntax-highlight theme="rainbow"><div layout="flexrow" gutters="plus-1" align="middle" style="height: 64px;">
+    <div align="bottom">
+      <span class="box">Item 1</span>
+    </div>
+    <div><span class="box">Item 2</span></div>
+    <div align="top">
+      <span class="box">Item 3</span>
+    </div>
+    <div><span class="box">Item 4</span></div>
+    <div align="bottom">
+      <span class="box">Item 5</span>
+    </div>
+</div></syntax-highlight>
+      </figure>
+      <figure>
+        <figcaption>
+          <p>You can align acrosss the x-axis with <code>cross-align</code>. Cross align can only be used on a container and effects all items. Values include <code>left</code>, <code>right</code>, <code>center</code>, <code>between</code>, and <code>around</code>.</p>
+        </figcaption>
+        <div layout="flexrow" cross-align="between">
+            <div breakpoint="tiny-66"><span class="box">Left</span></div>
+            <div breakpoint="tiny-content"><span class="box">Right</span></div>
+        </div>
+        <syntax-highlight theme="rainbow"><div layout="flexrow" cross-align="between">
+    <div breakpoint="tiny-66"><span class="box">Left</span></div>
+    <div breakpoint="tiny-content"><span class="box">Right</span></div>
+</div></syntax-highlight>
+      </figure>
+
+      <h3><syntax-highlight theme="rainbow">layout="flexgrid"</syntax-highlight></h3>
+      <figure>
+        <figcaption>
+          <p>Flexgrid allows you to size a list of flex items to achieve effects similar to a grid. Use <code>breakpoint</code> on each item to size them.</p>
+        <figcaption>
+        <div layout="flexgrid" gutters="plus-1">
+            <div breakpoint="tiny-100 medium-33 large-25">
+              <span class="box">1</span>
+            </div>
+            <div breakpoint="tiny-50 medium-33 large-25">
+              <span class="box">2</span>
+            </div>
+            <div breakpoint="tiny-50 medium-33 large-25">
+              <span class="box">3</span>
+            </div>
+            <div breakpoint="tiny-100 medium-100 large-25">
+              <span class="box">4</span>
+            </div>
+        </div>
+        <syntax-highlight theme="rainbow"><div layout="flexgrid" gutters="plus-1">
+    <div breakpoint="tiny-100 medium-33 large-25">
+      <span class="box">1</span>
+    </div>
+    <div breakpoint="tiny-50 medium-33 large-25">
+      <span class="box">2</span>
+    </div>
+    <div breakpoint="tiny-50 medium-33 large-25">
+      <span class="box">3</span>
+    </div>
+    <div breakpoint="tiny-100 medium-100 large-25">
+      <span class="box">4</span>
+    </div>
+</div></syntax-highlight>
+      </figure>
+      <figure>
+        <figcaption>
+          <p>Use <code>basis</code> on large flexgrids where you want specific columns and don't need individual control over items. You can change the columns at their respective breakpoints.</p>
+        </figcaption>
+        <div layout="flexgrid" gutters basis="tiny-4-columns medium-6-columns huge-12-columns">
+          <div><span class="box">1</span></div>
+          <div><span class="box">2</span></div>
+          <div><span class="box">3</span></div>
+          <div><span class="box">4</span></div>
+          <div><span class="box">5</span></div>
+          <div><span class="box">6</span></div>
+          <div><span class="box">7</span></div>
+          <div><span class="box">8</span></div>
+          <div><span class="box">9</span></div>
+          <div><span class="box">10</span></div>
+          <div><span class="box">11</span></div>
+          <div><span class="box">12</span></div>
+        </div>
+        <syntax-highlight theme="rainbow"><div layout="flexgrid" gutters basis="tiny-4-columns medium-6-columns huge-12-columns">
+  <div><span class="box">1</span></div>
+  <div><span class="box">2</span></div>
+  <div><span class="box">3</span></div>
+  <div><span class="box">4</span></div>
+  <div><span class="box">5</span></div>
+  <div><span class="box">6</span></div>
+  <div><span class="box">7</span></div>
+  <div><span class="box">8</span></div>
+  <div><span class="box">9</span></div>
+  <div><span class="box">10</span></div>
+  <div><span class="box">11</span></div>
+  <div><span class="box">12</span></div>
+</div></syntax-highlight>
+      </figure>
+
+      <h3><syntax-highlight theme="rainbow">layout="flexcolumn"</syntax-highlight></h3>
+      <figure>
+        <figcaption>
+          <p>A <code>flexcolumn</code> will automatically space each item's height in its container.</p>
+        </figcaption>
+        <div layout="flexcolumn" gutters style="height:300px;">
+          <div><span class="box">1</span></div>
+          <div><span class="box">2</span></div>
+          <div><span class="box">3</span></div>
+        </div>
+        <syntax-highlight theme="rainbow"><div layout="flexcolumn" gutters style="height:300px;">
+  <div><span class="box">1</span></div>
+  <div><span class="box">2</span></div>
+  <div><span class="box">3</span></div>
+</div></syntax-highlight>
+      </figure>
+      <figure>
+        <figcaption>
+          <p>Use <code>size-content</code> on an item to size its height the content of the item.</p>
+        </figcaption>
+        <div layout="flexcolumn" gutters style="height:300px;">
+          <div size-content><span class="box">1</span></div>
+          <div><span class="box">2</span></div>
+          <div><span class="box">3</span></div>
+        </div>
+        <syntax-highlight theme="rainbow"><div layout="flexcolumn" gutters style="height:300px;">
+  <div size-content><span class="box">1</span></div>
+  <div><span class="box">2</span></div>
+  <div><span class="box">3</span></div>
+</div></syntax-highlight>
+      </figure>
+
+      <h3><syntax-highlight theme="rainbow">layout="flexlist"</syntax-highlight></h3>
+      <figure>
+        <figcaption>
+          <p>Use a flexlist to take advantage of ordering and alignment while having a presentation that looks like a list.</p>
+        </figcaption>
+        <div layout="flexlist" gutters>
+          <div><span class="box">One</span></div>
+          <div><span class="box">Two</span></div>
+          <div><span class="box">Three</span></div>
+          <div><span class="box">Four</span></div>
+          <div><span class="box">Five</span></div>
+          <div><span class="box">Six</span></div>
+        </div>
+        <syntax-highlight theme="rainbow"><div layout="flexlist" gutters>
+  <div><span class="box">One</span></div>
+  <div><span class="box">Two</span></div>
+  <div><span class="box">Three</span></div>
+  <div><span class="box">Four</span></div>
+  <div><span class="box">Five</span></div>
+  <div><span class="box">Six</span></div>
+</div></syntax-highlight>
+      </figure>
+      <figure>
+        <figcaption>
+          <p>You can prioritize elements at a breakpoint using the order attribute.</p>
+        </figcaption>
+        <div layout="flexlist" gutters>
+          <div><span class="box">One</span></div>
+          <div><span class="box">Two</span></div>
+          <div><span class="box">Three</span></div>
+          <div order="medium-minus-1"><span class="box" style="background:darkgoldenrod;">Four</span></div>
+          <div order="medium-minus-1"><span class="box" style="background:darkgoldenrod;">Five</span></div>
+          <div><span class="box">Six</span></div>
+        </div>
+        <syntax-highlight theme="rainbow"><div layout="flexlist" gutters>
+  <div><span class="box">One</span></div>
+  <div><span class="box">Two</span></div>
+  <div><span class="box">Three</span></div>
+  <div order="medium-minus-1"><span class="box" style="background:darkgoldenrod;">Four</span></div>
+  <div order="medium-minus-1"><span class="box" style="background:darkgoldenrod;">Five</span></div>
+  <div><span class="box">Six</span></div>
+</div></syntax-highlight>
+      </figure>
+      <figure>
+        <figcaption>
+          <p>You can also de-prioritize elements at a breakpoint using the order attribute.</p>
+        </figcaption>
+        <div layout="flexlist" gutters>
+          <div><span class="box">One</span></div>
+          <div><span class="box">Two</span></div>
+          <div><span class="box">Three</span></div>
+          <div order="medium-plus-1"><span class="box" style="background:darkgoldenrod;">Four</span></div>
+          <div order="medium-plus-1"><span class="box" style="background:darkgoldenrod;">Five</span></div>
+          <div><span class="box">Six</span></div>
+        </div>
+        <syntax-highlight theme="rainbow"><div layout="flexlist" gutters>
+  <div><span class="box">One</span></div>
+  <div><span class="box">Two</span></div>
+  <div><span class="box">Three</span></div>
+  <div order="medium-plus-1"><span class="box" style="background:darkgoldenrod;">Four</span></div>
+  <div order="medium-plus-1"><span class="box" style="background:darkgoldenrod;">Five</span></div>
+  <div><span class="box">Six</span></div>
+</div></syntax-highlight>
+      </figure>
+    </section>
+
+    <section id="utility-classes" class="card utility-classes">
+      <h2>Utility Classes</h2>
+      <p>Kemet comes with some utility classes that assist with styling.</p>
+      <h3>Visibility</h3>
+      <p>Visibility classes either show or hide elements at the give breakpoints. Showing an element means making a element that's hidden by default display. Hidding an element means making a element that's visible by default hide. You can also specify what breakpoint the element should show or hide. Visibility classes are the only styles in Kemet that are not mobile first.</p>
+      <p>The syntax is <code>[show|hide]-[breakpoint]-[direction]</code>. So for example if you want to show an element at medimum only you would write <code>show-medium</code>. If you wanted to hide an element on anything medium and bigger you would write <code>hide-medium-up</code>.</p>
+      <section>
+          <div>
+            <h4>Visibility: Show Classes</h4>
+            <p class="box show-medium" style="display:none;">
+              <syntax-highlight theme="rainbow">.show-medium</syntax-highlight>
+              This will only show only on medium.
+            </p>
+            <p class="box show-medium-up" style="display:none;">
+                <syntax-highlight theme="rainbow">.show-medium-up</syntax-highlight>
+              This will show on medium larger breakpoints.
+            </p>
+            <p class="box show-medium-down" style="display:none;">
+              <syntax-highlight theme="rainbow">.show-medium-down</syntax-highlight>
+              This will show on medium and smaller breakpoints. 
+            </p>
+          </div>
+          <div>
+            <h4>Visibility: Hide Classes</h4>
+            <p class="box hide-medium">
+              <syntax-highlight theme="rainbow">.hide-medium</syntax-highlight>
+              This will hide only on medium.
+            </p>
+            <p class="box hide-medium-up">
+              <syntax-highlight theme="rainbow">.hide-medium-up</syntax-highlight>
+              This will hide on medium and larger breakpoints.
+            </p>
+            <p class="box hide-medium-down">
+              <syntax-highlight theme="rainbow">.hide-medium-up</syntax-highlight>
+              This will hide on medium and smaller breakpoints.</p>
+          </div>
+        </section>
+    </section>
+
+    <section id="templates" class="card templates">
+      <h2>Templates</h2>
+      <p>Check out the power of Kemet in action with templates. These templates use Kemet's layout system in combination with a few <a href="https://www.webcomponents.org/author/PolymerElements">PaperElements</a>. Use them to get a feel for making complex layouts with Kemet.</p>
+      <div layout="flexgrid" gutters="plus-6">
+        <div breakpoint="tiny-100 medium-50 large-25">
+          <figure>
+            <a href="/templates/agency" target="_blank">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+                <rect id="Rectangle_1_copy_3" data-name="Rectangle 1 copy 3" x="42" y="38" width="1836" height="134" fill="#5b646a" />
+                <rect id="Rectangle_1_copy" data-name="Rectangle 1 copy" x="42" y="206" width="902" height="374" fill="#5b646a" />
+                <rect id="Rectangle_1_copy_6" data-name="Rectangle 1 copy 6" x="983" y="206" width="897" height="374" fill="#5b646a" />
+                <rect id="Rectangle_1_copy_2" data-name="Rectangle 1 copy 2" x="1288" y="609" width="590" height="429" fill="#5b646a" />
+                <rect id="Rectangle_1_copy_4" data-name="Rectangle 1 copy 4" x="665" y="609" width="590" height="429" fill="#5b646a" />
+                <rect id="Rectangle_1_copy_5" data-name="Rectangle 1 copy 5" x="42" y="609" width="590" height="429" fill="#5b646a" />
+              </svg>
+            </a>
+            <figcaption><strong>Agency</strong></figcaption>
+          </figure>
+        </div>
+        <div breakpoint="tiny-100 medium-50 large-25">
+          <figure>
+            <a href="/templates/ecommerce" target="_blank">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+                <rect x="1473.75" y="419" width="406.25" height="617" fill="#5b646a" />
+                <path id="Rectangle_1_copy" data-name="Rectangle 1 copy" class="cls-1" d="M996.815,419H1403.07v617H996.815V419Z" fill="#5b646a" />
+                <rect id="Rectangle_1_copy_2" data-name="Rectangle 1 copy 2" x="42" y="419" width="406.25" height="617" fill="#5b646a" />
+                <path id="Rectangle_1_copy_4" data-name="Rectangle 1 copy 4" class="cls-1" d="M518.934,419H925.185v617H518.934V419Z" fill="#5b646a" />
+                <rect id="Rectangle_1_copy_3" data-name="Rectangle 1 copy 3" x="42" y="38" width="1838" height="309" fill="#5b646a" />
+              </svg>
+            </a>
+            <figcaption><strong>Ecommerce</strong></figcaption>
+          </figure>
+        </div>
+        <div breakpoint="tiny-100 medium-50 large-25">
+          <figure>
+            <a href="/templates/news" target="_blank">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+                <rect id="Rectangle_1_copy_3" data-name="Rectangle 1 copy 3" x="42" y="38" width="1836" height="169" fill="#5b646a"/>
+                <rect id="Rectangle_1_copy_2" data-name="Rectangle 1 copy 2" x="1288" y="575" width="590" height="461" fill="#5b646a"/>
+                <rect id="Rectangle_1_copy_4" data-name="Rectangle 1 copy 4" x="1288" y="251" width="590" height="289" fill="#5b646a"/>
+                <rect id="Rectangle_1_copy_5" data-name="Rectangle 1 copy 5" x="42" y="251" width="1205" height="785" fill="#5b646a"/>
+              </svg>
+            </a>
+            <figcaption><strong>News</strong></figcaption>
+          </figure>
+        </div>
+        <div breakpoint="tiny-100 medium-50 large-25">
+          <figure>
+            <a href="/templates/travel" target="_blank">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+                <rect x="1518" y="38" width="360" height="337" fill="#5b646a" />
+                <rect id="Rectangle_1_copy_3" data-name="Rectangle 1 copy 3" x="42" y="38" width="1030" height="337" fill="#5b646a" />
+                <rect id="Rectangle_1_copy" data-name="Rectangle 1 copy" x="1115" y="38" width="360" height="337" fill="#5b646a" />
+                <rect id="Rectangle_1_copy_2" data-name="Rectangle 1 copy 2" x="1288" y="419" width="590" height="617" fill="#5b646a" />
+                <rect id="Rectangle_1_copy_4" data-name="Rectangle 1 copy 4" x="665" y="419" width="590" height="617" fill="#5b646a" />
+                <rect id="Rectangle_1_copy_5" data-name="Rectangle 1 copy 5" x="42" y="419" width="590" height="617" fill="#5b646a" />
+              </svg>
+            </a>
+            <figcaption><strong>Travel</strong></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </template>
+
+  <script>
+    class ViewHome extends Polymer.Element {
+      static get is() { return 'view-home'; }
+    }
+
+    window.customElements.define(ViewHome.is, ViewHome);
+  </script>
+</dom-module>

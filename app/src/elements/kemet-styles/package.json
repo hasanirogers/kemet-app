@@ -1,0 +1,18 @@
+{
+  "name": "@afrotechnologies/kemet-styles",
+  "version": "0.0.3",
+  "main": "kemet-styles-layout.html",
+  "repository": "https://github.com/Afrotechnologies/kemet-styles",
+  "author": "Hasani Rogers <hasani.rogers@afrotechnologies.com>",
+  "license": "MIT",
+  "scripts": {
+    "sass": "node-sass ./kemet-styles-layout.scss --output ./"
+  },
+  "devDependencies": {
+    "fs": "^0.0.2",
+    "gulp": "^3.9.1",
+    "map-stream": "0.0.6",
+    "node-sass": "^3.7.0",
+    "path": "^0.12.7"
+  }
+}

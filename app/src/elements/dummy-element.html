@@ -1,0 +1,54 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../app-styles.html">
+<link rel="import" href="../app-icons.html">
+
+
+<dom-module id="dummy-element">
+  <template>
+    <style>
+        :host {
+            display: block;
+            position: relative;
+        }
+        h1 {
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+    </style>
+    <h1>[[label]]</h1>
+  </template>
+
+  <script>
+    class DummyElement extends Polymer.Element {
+        static get is() { return 'dummy-element'; }
+
+        static get properties() {
+            return {
+                label: {
+                    type: String
+                },
+                height: {
+                    type: String
+                }
+            }
+        }
+
+
+        constructor() {
+            super();
+        }
+
+        connectedCallback() {
+            super.connectedCallback();
+            
+            if (typeof this.height == 'string') this.style.height = this.height;
+        }
+    }
+
+    window.customElements.define(DummyElement.is, DummyElement);
+  </script>
+</dom-module>

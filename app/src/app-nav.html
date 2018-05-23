@@ -1,0 +1,56 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="elements/kemet-styles/kemet-styles-layout.html">
+
+<dom-module id="app-nav">
+  <template>
+    <custom-style>
+      <style is="custom-style" include="kemet-styles-layout"></style>
+    </custom-style>
+    <style>
+        div {
+            position: fixed;
+            top: 5rem;
+            right: 2rem;
+            z-index: 1;
+        }
+        
+        a {
+          color: #e0dbaf;
+          text-align: center;
+          text-decoration: none;
+          margin: 0 6px;
+          padding: 0.5rem 1rem;
+          background: rgba(37, 50, 59, 0.5);
+          transition: all 200ms ease;
+          border: 1px solid transparent;
+        }
+
+        a:hover {
+          border: 1px solid #e0dbaf;
+        }
+
+        .active {
+          color: #e0dbaf;
+          border: 1px solid rgba(179, 168, 0, 0.5);
+        }
+    </style>
+    <div>
+        <nav layout="flexlist" gutters>
+            <a href="">Getting Started</a>
+            <a href="">Avelh</a>
+            <a href="">Styles</a>
+            <a href="">Elements</a>
+            <a href="">Templates</a>
+            <a href="">Generator</a>
+        </nav>
+    </div>
+  </template>
+
+  <script>
+    class AppNav extends Polymer.Element {
+      static get is() { return 'app-nav'; }
+    }
+
+    window.customElements.define(AppNav.is, AppNav);
+  </script>
+</dom-module>

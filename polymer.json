@@ -1,0 +1,26 @@
+{
+  "entrypoint": "app/index.html",
+  "shell": "app/src/app-shell.html",
+  "builds": [
+    {
+      "name": "es5-bundle",
+      "bundle": false,
+      "js": {"compile": true, "minify": false},
+      "css": {"minify": false},
+      "html": {"minify": false}
+    }
+  ],
+  "fragments": [
+    "app/src/view-home.html",
+    "app/src/view-error.html"
+  ],
+  "sourceGlobs": [
+    "app/src/**/*",
+    "app/images/**/*",
+    "bower.json"
+  ],
+  "includeDependencies": [
+    "app/manifest.json",
+    "app/bower_components/webcomponentsjs/webcomponents-lite.min.js"
+  ]
+}

@@ -1,0 +1,41 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../app-styles.html">
+<link rel="import" href="../app-icons.html">
+
+
+<dom-module id="dummy-travel">
+  <template>
+    <style>
+        :host {
+            display: block;
+            padding: 1rem;
+            border: 1px solid #ddd;
+        }
+
+        dummy-element {
+            display: block;
+            width: 100%;
+            height: 370px;
+            background: #ccc;
+        }
+    </style>
+    <dummy-element label="[[label]]"></dummy-element>
+    <slot id="caption" name="caption"></slot>
+  </template>
+
+  <script>
+    class DummyTravel extends Polymer.Element {
+      static get is() { return 'dummy-travel'; }
+
+      static get properties() {
+          return {
+              label: {
+                  type: String
+              }
+          }
+      }
+    }
+
+    window.customElements.define(DummyTravel.is, DummyTravel);
+  </script>
+</dom-module>

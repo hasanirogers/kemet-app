@@ -1,0 +1,28 @@
+{
+  "name": "kemet-styles",
+  "description": "Sass layouts for Polymer!",
+  "main": "kemet-styles.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^2.0.0"
+  },
+  "devDependencies": {
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
+    "web-component-tester": "Polymer/web-component-tester#^6.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
+  },
+  "resolutions": {
+    "polymer": "^2.0.0"
+  },
+  "homepage": "https://github.com/Afrotechnologies/kemet-styles",
+  "version": "0.0.3",
+  "_release": "0.0.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.0.3",
+    "commit": "a3f8fa24ebe747281e04de27b8ec44cf64355580"
+  },
+  "_source": "https://github.com/Afrotechnologies/kemet-styles.git",
+  "_target": "^0.0.3",
+  "_originalSource": "kemet-styles",
+  "_direct": true
+}

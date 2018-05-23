@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+  <title><%- title %></title>
+
+  <!-- shims -->
+  <script src="/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="/bower_components/polymer/polymer.html">
+
+  <!-- <link href="/css/kemet.min.css" rel="stylesheet" type="text/css"> -->
+  <link href="/src/elements/kemet-styles/kemet-styles-layout.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-size: 16px;
+      font-family: 'PT Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    dummy-element {
+      background: #ccc;
+      height: 150px;
+    }
+
+    .basiclist {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .taglist li {
+      color: white;
+      margin: 6px 6px 0 0;
+      padding: 4px 8px;
+      background: rgba(0,0,0,0.5);
+    }
+
+    .page-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .page-wrapper,
+    .full-wrapper {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .full-wrapper {
+      background-color:#eee;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+  </style>
+
+  <!-- elements -->
+  <link rel="import" href="/bower_components/paper-input/paper-input.html">
+  <link rel="import" href="/bower_components/paper-button/paper-button.html">
+  <link rel="import" href="/bower_components/iron-icons/iron-icons.html">
+  <link rel="import" href="/bower_components/iron-icons/communication-icons.html">
+  <link rel="import" href="/bower_components/iron-icons/social-icons.html">
+  <!-- <link rel="import" href="/bower_components/paper-carousel/paper-carousel.html"> -->
+
+  <link rel="import" href="/src/app-icons.html">
+  <link rel="import" href="/src/elements/dummy-element.html">
+  <link rel="import" href="/src/elements/dummy-login.html">
+  <link rel="import" href="/src/elements/dummy-travel.html">
+  <% if (ENV_DEVELOPMENT) { %>
+    <script src="http://localhost:35729/livereload.js"></script>
+  <% } %>
+</head>
+<body class="<%- slug %>-template">

@@ -1,0 +1,125 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="elements/kemet-styles/kemet-styles-layout.html">
+<link rel="import" href="app-icons.html">
+<link rel="import" href="app-styles.html">
+
+<dom-module id="app-header">
+  <template>
+    <custom-style>
+      <style is="custom-style" include="kemet-styles-layout"></style>
+    </custom-style>
+    <custom-style>
+      <style is="custom-style" include="app-styles"></style>
+    </custom-style> 
+    <style>
+      :host {
+        display: block;
+        margin: 1rem;
+      }
+
+      header {
+        padding: 0 2rem 4rem 2rem;
+        position: relative;
+        z-index: 1;
+        animation: fadein 800ms ease;
+      }
+
+        header [icon] {
+        --iron-icon-height: 164px;
+        --iron-icon-width: 164px;
+      }  
+
+      h1 {
+        color: #e0dbaf;
+        font-size: 96px;
+        line-height: 0;
+        display: inline-block;
+        margin: 3rem 0;
+      }
+
+      aside {
+        font-size: 2rem;
+        display: block;
+        opacity: 0.5;
+        margin-bottom: 2rem;
+      }
+
+      aside div {
+        font-size: 1.5rem;
+        line-height: 1;
+      }
+
+      [align="middle"] {
+        text-align: left;
+      }
+
+      .btn {
+        font-size: 1.5rem;
+        padding: 0.75rem 2rem;
+        border-radius: 6px;
+        text-decoration: none;
+        background-color: #367536;
+        color: #ffffff;
+        transition: 200ms all ease;
+      }
+
+      .btn:hover {
+        background-color: #499849;
+      }
+
+      .large-text {
+        font-size: 2rem;
+        display: block;
+
+      }
+
+      .logo {
+        display: none;
+      }
+
+      @media screen and (max-width: 768px) {
+        header > [breakpoint*="tiny-content"] {
+          flex: 1;
+        }
+      }
+
+      @media screen and (min-width: 1025px) {
+        .logo {
+          display: block;
+        }
+      }
+    </style>
+    
+    
+    <header layout="flexrow" align="middle" cross-align="between">
+      <div breakpoint="tiny-content">
+        <p>Kemet is not a framework or a grid. <span class="large-text">Kemet is a powerful layout system.</span></p>
+        <a class="btn" href="https://github.com/hasanirogers/kemet-sass">get latest version</a>
+      </div>
+      <div breakpoint="tiny-content" class="logo">
+        <div layout="flexlist" gutters>
+            <iron-icon icon="appicons:anubis"></iron-icon>
+            <div align="middle">
+              <h1>Kemet</h1>
+            </div>
+          </div>
+      </div>
+    </header>
+    
+    
+    
+
+    
+
+
+
+  </template>
+
+  <script>
+    class AppHeader extends Polymer.Element {
+      static get is() { return 'app-header'; }
+    }
+
+    window.customElements.define(AppHeader.is, AppHeader);
+  </script>
+</dom-module>
